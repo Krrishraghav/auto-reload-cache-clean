@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Reload Demo</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --danger: #dc2626;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 1rem;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .update-notice {
+            background-color: var(--primary);
+        }
+        .reload-warning {
+            background-color: var(--danger);
+        }
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .stats {
+            background: #f3f4f6;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Auto-Reload Demo</h1>
+    <div class="stats">
+        <p>Current version: <strong id="current-version">Loading...</strong></p>
+        <p>Page loaded at: <strong id="load-time"></strong></p>
+        <p>Visit count: <strong id="visit-count">0</strong></p>
+    </div>
+    
+    <button id="deploy-btn">Simulate Deployment</button>
+    
+    <div id="update-notification" class="notification update-notice">
+        New update available! Reloading in <span id="countdown">10</span> seconds
+        <button onclick="cancelReload()">Cancel</button>
+    </div>
+    
+    <div id="reload-notification" class="notification reload-warning">
+        Update applied! Page will reload now.
+    </div>
+    <script src="loader.js"></script>
+</body>
+</html>
